@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "7c64ecd3-f6c9-4380-8b13-985bf05aef56",
+		"name": "Warehouse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27748839"
+	},
+	"item": [
+		{
+			"name": "save-deal",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var current_timestamp = new Date();\r",
+							"postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp.toISOString());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"{{$randomUUID}}\",\r\n    \"fromCurrency\":\"JOD\",\r\n    \"toCurrency\":\"USD\",\r\n    \"timestamp\":\"{{current_timestamp}}\",\r\n    \"amount\":20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/deals/save-deal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"deals",
+						"save-deal"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
