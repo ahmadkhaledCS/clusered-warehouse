@@ -3,10 +3,10 @@ package com.ahmadsuleiman.cluseredwarehouse.Service;
 import com.ahmadsuleiman.cluseredwarehouse.Dao.DealRepository;
 import com.ahmadsuleiman.cluseredwarehouse.Dao.InvalidDealRepository;
 import com.ahmadsuleiman.cluseredwarehouse.Model.Deal;
+import com.ahmadsuleiman.cluseredwarehouse.Model.DealResponse;
 import com.ahmadsuleiman.cluseredwarehouse.Model.InvalidDeal;
 import io.micrometer.common.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +24,8 @@ public class DealService {
         this.invalidDealRepository=invalidDealRepository;
     }
 
-    public ResponseEntity<?> saveDeal(Deal deal) {
-        log.info("received deal : "+ deal.toString());
+    public ResponseEntity<DealResponse> saveDeal(Deal deal) {
+        log.info("validating received deal : "+ deal.toString());
         boolean isValid = true;
         String invalidReason = "";
 
@@ -52,10 +52,21 @@ public class DealService {
 
         if (isValid) {
             dealRepository.save(deal);
-            return ResponseEntity.ok("Deal saved successfully");
+            log.info("Deal is valid saved to deals collection Deal : {}",deal);
+            return ResponseEntity.ok(DealResponse.builder()
+                            .status("Success")
+                            .description("Deal saved successfully")
+                            .requestId(deal.getId())
+                    .build());
         } else {
-            invalidDealRepository.save(convertToInvalidDeal(deal, invalidReason));
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid deal: " + invalidReason);
+            InvalidDeal invalidDeal=convertToInvalidDeal(deal, invalidReason);
+            invalidDealRepository.save(invalidDeal);
+            log.error("Deal is invalid saved to invalid-deals Invalid Deal : {}",invalidDeal);
+            return ResponseEntity.ok(DealResponse.builder()
+                    .status("Failed")
+                    .description("Invalid deal: " + invalidReason)
+                    .requestId(deal.getId())
+                    .build());
         }
     }
 
