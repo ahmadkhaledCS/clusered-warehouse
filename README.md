@@ -42,3 +42,6 @@ curl --location 'http://localhost:8080/api/v1/deals/save-deal' \
 }'
 ```
 - Also you can find postman config here - [Collection](https://github.com/ahmadkhaledCS/clusered-warehouse/blob/master/Warehouse.postman_collection.json)
+
+### Endpoints
+- Logic of the service : If the request was invalid it will be saved in another collection just in case they are needed later if its valid then add it.
