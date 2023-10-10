@@ -3,6 +3,7 @@ package com.ahmadsuleiman.cluseredwarehouse.Controllers;
 import com.ahmadsuleiman.cluseredwarehouse.Model.Deal;
 import com.ahmadsuleiman.cluseredwarehouse.Service.DealService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -18,7 +19,7 @@ public class DealController {
     }
 
     @PostMapping("/save-deal")
-    public Deal saveDeal(@RequestBody Deal deal){
+    public ResponseEntity<?> saveDeal(@RequestBody Deal deal){
         return dealService.saveDeal(deal);
     }
 

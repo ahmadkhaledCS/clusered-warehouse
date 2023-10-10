@@ -15,12 +15,12 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "deals")
-public class Deal {
-    @Id
-    private String id;
+@Document(collection = "invalid-deals")
+public class InvalidDeal {
+    private String requestId;
     private String fromCurrency;
     private String toCurrency;
     private Date timestamp;
     private BigDecimal amount;
+    private String invalidReason;
 }
