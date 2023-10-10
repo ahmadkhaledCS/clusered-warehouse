@@ -41,4 +41,4 @@ curl --location 'http://localhost:8080/api/v1/deals/save-deal' \
     "amount":20
 }'
 ```
-- Also you can find postman config here - [Collection]([http://localhost:8080](https://github.com/ahmadkhaledCS/clusered-warehouse/blob/master/Warehouse.postman_collection.json)https://github.com/ahmadkhaledCS/clusered-warehouse/blob/master/Warehouse.postman_collection.json)
+- Also you can find postman config here - [Collection](https://github.com/ahmadkhaledCS/clusered-warehouse/blob/master/Warehouse.postman_collection.json)
