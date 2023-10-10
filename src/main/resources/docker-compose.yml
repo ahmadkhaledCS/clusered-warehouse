@@ -1,0 +1,15 @@
+version: "3"
+services:
+  myMongoDb:
+    image: mongo:latest
+    container_name: myMongoDb
+    ports:
+      - '27017:27017'
+
+  clustered-warehouse-service:
+    image: clustered-warehouse-service
+    container_name: clustered-warehouse-service
+    ports:
+      - '8080:8080'
+    links:
+      - myMongoDb
