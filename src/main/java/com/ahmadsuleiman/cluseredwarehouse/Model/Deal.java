@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -15,6 +18,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collation = "deals")
 public class Deal {
     @Id
-    private int id;
-    private String name;
+    private String id;
+    private String fromCurrency;
+    private String toCurrency;
+    private Date timestamp;
+    private BigDecimal amount;
 }
