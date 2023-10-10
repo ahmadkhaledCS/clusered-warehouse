@@ -7,6 +7,7 @@ import com.ahmadsuleiman.cluseredwarehouse.Model.DealResponse;
 import com.ahmadsuleiman.cluseredwarehouse.Model.InvalidDeal;
 import io.micrometer.common.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -62,7 +63,7 @@ public class DealService {
             InvalidDeal invalidDeal=convertToInvalidDeal(deal, invalidReason);
             invalidDealRepository.save(invalidDeal);
             log.error("Deal is invalid saved to invalid-deals Invalid Deal : {}",invalidDeal);
-            return ResponseEntity.ok(DealResponse.builder()
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(DealResponse.builder()
                     .status("Failed")
                     .description("Invalid deal: " + invalidReason)
                     .requestId(deal.getId())

@@ -2,5 +2,5 @@ spring:
   data:
     mongodb:
       database: DealsStore
-      host: myMongoDb
+      host: localhost
       port: 27017
