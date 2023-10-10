@@ -7,9 +7,11 @@ services:
       - '27017:27017'
 
   clustered-warehouse-service:
-    image: clustered-warehouse-service
+    build: .
     container_name: clustered-warehouse-service
     ports:
       - '8080:8080'
     links:
       - myMongoDb
+    volumes:
+      - ./prod-docker.yml:/app/application.yml
