@@ -25,6 +25,10 @@ The project fulfills the following requirements:
 
 - [Java 17, Docker, SpringBoot]
 
+### How to use
+
+- Only run the docker-compose and you are ready to go 
+
 
 ### Endpoints
 
