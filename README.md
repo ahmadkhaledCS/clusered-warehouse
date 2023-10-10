@@ -26,3 +26,17 @@ The project fulfills the following requirements:
 - [Java 17, Docker, SpringBoot]
 
 
+### Endpoints
+
+You can interact with the Clustered Data Warehouse application using cURL commands. Below is an example of how to make a cURL request to submit a deal:
+
+```bash
+curl --location 'http://localhost:8080/api/v1/deals/save-deal' \
+--header 'Content-Type: application/json' \
+--data '{
+    "id":"f41cfcf2-8726-405e-a5fe-594d41d6de57",
+    "fromCurrency":"JOD",
+    "toCurrency":"USD",
+    "timestamp":"{{current_timestamp}}",
+    "amount":20
+}'
