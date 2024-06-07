@@ -15,7 +15,7 @@ The project fulfills the following requirements:
 
 - Database: [MongoDB]
 - Build Tool: [Maven]
-- Error/Exception Handling [business-Logic/Technical-Exceprions]
+- Error/Exception Handling [business-Logic/Technical-Exceptions]
 - Logging [SL4J]
 - Unit Testing with Coverage [Mockito/SpringBootTest]
 - Docker Compose for Deployment
@@ -27,7 +27,8 @@ The project fulfills the following requirements:
 
 ### How to use
 
-- Only run the docker-compose and you are ready to go 
+- Maven clean and run to build the Jar file
+- Run the docker-compose and you are ready to go 
 
 
 ### Endpoints
@@ -45,7 +46,7 @@ curl --location 'http://localhost:8080/api/v1/deals/save-deal' \
     "amount":20
 }'
 ```
-- Also you can find postman config here - [Collection](https://github.com/ahmadkhaledCS/clusered-warehouse/blob/master/Warehouse.postman_collection.json)
+- Also, you can find postman config here - [Collection](https://github.com/ahmadkhaledCS/clusered-warehouse/blob/master/Warehouse.postman_collection.json)
 
 ### Endpoints
 - Logic of the service : If the request was invalid it will be saved in another collection just in case they are needed later if its valid then add it.
